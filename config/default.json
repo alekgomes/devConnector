@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://alek123:alek123@devconnector.thhqv.mongodb.net/Devconnector?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://alek123:alek123@devconnector.thhqv.mongodb.net/Devconnector?retryWrites=true&w=majority",
+  "jwtSecret": "mydumbsecret"
 }

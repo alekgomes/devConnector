@@ -45,7 +45,6 @@ router.post(
       const userPassword = await bcrypt.hash(password, salt);
 
       user = new User({ name, password: userPassword, email, avatar });
-
       await user.save();
       // Return jwt
       const payload = {

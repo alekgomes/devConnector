@@ -1,0 +1,18 @@
+// Esse é um boilerplate; a maioria dos store.js terão essa carinha aí
+
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk"; // middleware
+import rootReducer from "./reducers";
+
+const initialState = {};
+
+const middleware = [thunk];
+
+const store = createStore(
+  rootReducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
+export default store

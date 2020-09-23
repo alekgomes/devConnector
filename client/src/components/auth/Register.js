@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { setAlert } from "../../redux/alert/alertAction";
+import { registerUser } from "../../redux/auth/authAction";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -13,33 +16,24 @@ const Register = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
+  const dispatch = useDispatch();
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("password do not match");
+      dispatch(setAlert("Password do not match", "danger"));
     } else {
-      const newUser = {
-        name,
-        email,
-        password,
-      };
-
-      try {
-        const config = {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-        const body = JSON.stringify(newUser);
-        const res = await axios.post("/api/users", body, config);
-        console.log(res.data);
-      } catch (error) {
-        console.error(error.response.data);
-      }
+      dispatch(registerUser({ name, email, password }));
     }
   };
 
   const { name, email, password, password2 } = formData;
+
+  if(isAuthenticated) {
+    return <Redirect to="/"/>
+  }
 
   return (
     <section>
@@ -55,7 +49,7 @@ const Register = () => {
             name="name"
             value={name}
             onChange={(e) => onChange(e)}
-            required
+            
           />
         </div>
         <div className="form-group">
@@ -65,7 +59,7 @@ const Register = () => {
             placeholder="Email Address"
             onChange={(e) => onChange(e)}
             name="email"
-            required
+            
           />
           <small className="form-text">
             This site uses Gravatar so if you want a profile image, use a

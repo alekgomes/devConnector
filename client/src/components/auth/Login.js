@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import { setAlert } from "../../redux/alert/alertAction";
+import { Redirect } from "react-router-dom";
+import { connect, useSelector } from "react-redux";
+import { loginUser } from "../../redux/auth/authAction";
 
-const Login = () => {
+const Login = ({ loginUser }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const onChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -12,11 +18,14 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("SUCCESS");
+    loginUser(email, password);
   };
 
-  const { name, email, password, password2 } = formData;
+  const { email, password } = formData;
+
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <section>
@@ -51,4 +60,10 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    email: state.auth.email,
+  };
+};
+
+export default connect(null, { loginUser })(Login);

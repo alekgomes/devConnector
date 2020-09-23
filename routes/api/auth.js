@@ -34,19 +34,19 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.mapped() });
+      return res.status(400).json({ errors: errors.array() });
     }
     const { email, password } = req.body;
     try {
       let user = await User.findOne({ email });
 
       if (!user)
-        return res.status(401).json({ errors: { msg: "Invalid credentials" } });
+        return res.status(401).json({ errors: [{ msg: "Invalid credentials" }] });
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch)
-        return res.status(401).json({ errors: { msg: "Invalid credentials" } });
+        return res.status(401).json({ errors: [{ msg: "Invalid credentials" }] });
 
       // Return jwt
       const payload = {

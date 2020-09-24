@@ -30,14 +30,14 @@ const Login = ({ loginUser }) => {
     <section>
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Sign IntoYour Account
+        <i className="fas fa-user"></i> Logue na sua conta
       </p>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <input
             type="email"
             value={email}
-            placeholder="Email Address"
+            placeholder="Email"
             onChange={(e) => onChange(e)}
             name="email"
             required
@@ -57,12 +57,6 @@ const Login = ({ loginUser }) => {
       </form>
     </section>
   );
-};
-
-const mapStateToProps = (state) => {
-  return {
-    email: state.auth.email,
-  };
 };
 
 export default connect(null, { loginUser })(Login);

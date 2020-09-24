@@ -39,13 +39,13 @@ const Register = () => {
     <section>
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Create Your Account
+        <i className="fas fa-user"></i> Crie sua conta
       </p>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Nome"
             name="name"
             value={name}
             onChange={(e) => onChange(e)}
@@ -56,14 +56,13 @@ const Register = () => {
           <input
             type="email"
             value={email}
-            placeholder="Email Address"
+            placeholder="Email"
             onChange={(e) => onChange(e)}
             name="email"
             
           />
           <small className="form-text">
-            This site uses Gravatar so if you want a profile image, use a
-            Gravatar email
+            Esse site utiliza Gravatar para gerar imagens de perfil             
           </small>
         </div>
         <div className="form-group">
@@ -79,17 +78,17 @@ const Register = () => {
         <div className="form-group">
           <input
             type="password"
-            placeholder="Confirm Password"
+            placeholder="Confirme Password"
             name="password2"
             value={password2}
             onChange={(e) => onChange(e)}
             minLength="6"
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Register" />
+        <input type="submit" className="btn btn-primary" value="Registrar" />
       </form>
       <p className="my-1">
-        Already have an account? <a href="login.html">Sign In</a>
+        Já possui uma conta? <a href="login.html">Sign In</a>
       </p>
     </section>
   );

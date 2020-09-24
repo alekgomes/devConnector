@@ -28,7 +28,7 @@ const Navbar = () => {
         <Link to="!#">Developers</Link>
       </li>
       <li>
-        <Link to="/register">Register</Link>
+        <Link to="/register">Registre-se</Link>
       </li>
       <li>
         <Link to="/login">Login</Link>

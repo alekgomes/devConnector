@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { setAlert } from "../../redux/alert/alertAction";
 import { Redirect } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import { loginUser } from "../../redux/auth/authAction";

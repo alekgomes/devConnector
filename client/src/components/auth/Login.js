@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import { loginUser } from "../../redux/auth/authAction";
+import { sanitizeCookie } from "express-validator";
 
 const Login = ({ loginUser }) => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ const Login = ({ loginUser }) => {
   const { email, password } = formData;
 
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (

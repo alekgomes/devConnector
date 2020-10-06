@@ -10,8 +10,12 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "npx mocha tests/**/*.spec.js --timeout 5000 --exit",
     "lint": "npx eslint ./routes/**/*.js ./models/**/*.js ./middleware/**/*.js ",
-    "prepush": "npm run lint" ,
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
   },
   "author": "Lucas Álek",
   "license": "MIT",

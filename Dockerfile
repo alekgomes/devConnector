@@ -1,7 +1,13 @@
-FROM node:7.7.4-alpine
+FROM node
 
-RUN mkdir /src
-COPY app.js /src
-WORKDIR /src
-EXPOSE 3000
-CMD node app.js
+WORKDIR /usr/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 5000
+
+CMD node server

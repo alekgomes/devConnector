@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  server:
+    build: .
+    command: node server
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/usr/app/
+
+  client:
+    build: ./client/
+    command: npm start
+    ports:
+      - "3000:3000"

@@ -20,6 +20,7 @@
     "uuid": "^7.0.2"
   },
   "scripts": {
+    "client": "nodemon src/index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
